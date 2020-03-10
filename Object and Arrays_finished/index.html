@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> JS Reference VS Copy </title>
+    </head>
+    <body>
+        <script>
+
+            // let age = 100;
+            // let age1 = age;
+            // console.log(age,age1);
+            // age = 200;
+            // console.log(age,age1);
+            // let name = "Shi";
+            // let name2 = name;
+            // console.log(name);
+            // name = 'Shiju';
+            // console.log(name,name2);
+
+            const countryArry =["India","Canada","Kuwait","Srilanka","USA"];
+            const country = countryArry;
+           // console.log(countryArry,country);
+            country[3] = "Britain";
+ 
+            const country2 = countryArry.slice();
+            const country3 = [].concat(countryArry);
+            const country4 = [...countryArry];
+            country4[4] = "Japan";
+            console.log(country4);
+            const country5 = Array.from(countryArry);
+            
+            const countrydetails=
+            {
+                    population:"256525",
+                    capital:"Delhi"
+            };
+             const india = countrydetails;
+             india.number = 90;
+      
+
+             const india1 = Object.assign([],countrydetails,{number:500,capital:"Mumbai"});
+             console.log(india1);
+ 
+
+            const Shi = 
+            {
+                name:"Shiju",
+                age:"36",
+                social:
+                {
+                faceboo:"@.facebook",
+                twitter:"@twitter",
+                gmail:"@gmail",
+                dropbox:"@dropbox"
+                }
+            };
+
+            console.clear();
+            console.log(Shi);
+
+            const dev = Object.assign([],Shi);
+            
+            const dev2 = JSON.parse(JSON.stringify(Shi));
+
+
+        </script>
+    </body>
+</html>

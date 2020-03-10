@@ -1,0 +1,113 @@
+<html>
+<head>
+
+
+<style>
+html
+{
+background-color: bisque;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-style: italic;
+}
+.pBox
+{
+    background: darkslategray;
+    max-width: 400;
+    margin:50px auto;
+    border-radius: 2px;
+    box-shadow: 3px 3px 0 rgba(1, 51, 32, 0.1);
+}
+ p
+ {
+    margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+ }
+.item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #F1F1F1;
+    }
+.cBox
+{
+    display :flex;
+    align-items: center;
+    border-bottom: 1px solid #F1F1F1;
+}
+ .cBox:checked + h2 {
+      background: #F9F9F9;
+      text-decoration: line-through;
+    }
+    input[type="checkbox"]
+    {
+      margin: 20px;
+    }
+    h2
+    {
+        margin: 0;
+      padding: 20px;
+      transition: background 0.2s;
+      flex: 1;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+      border-left: 1px solid #D1E2FF;
+       
+    }
+ 
+</style>
+
+</head>
+<body>
+    <p> Press Shift Key select all check boxes</p>
+<div class = "pBox">
+    <div class = "cBox">
+        <input type="checkbox">
+        <h2> <spam> Honda  Civic </span> </h2>
+    </div>
+    <div class = "cBox">
+        <input type="checkbox">
+        <h2> <spam> Totyota </spam> <span> Corolla </span> </h2>
+    </div>
+    <div class = "cBox">
+        <input type="checkbox">
+        <h2> <spam> Ford </spam> <span> Escape </span> </h2>
+    </div>
+    <div class = "cBox">
+        <input type="checkbox">
+        <h2> <spam> Pontiac </spam> <span> Montana </span> </h2>
+    </div>
+    <div class = "cBox">
+        <input type="checkbox">
+        <h2> <spam> Maruthi </spam> <span> Swift </span> </h2>
+    </div>
+
+</div>
+<script>
+    const chkboxes = document.querySelectorAll('.pBox input[type="checkbox"]');
+    chkboxes.forEach(x => x.addEventListener('click',SelectCheck));
+    let lastChecked;
+    function SelectCheck(e)
+    {
+        let inBetweenCheck = false;
+        if(e.shiftKey && this.checked)
+        {
+            chkboxes.forEach(chk => 
+            {
+                console.log(chk);
+                if(chk === this || chk === lastChecked)
+                {
+                    inBetweenCheck = !inBetweenCheck;
+                }
+                if(inBetweenCheck)
+                {
+                    chk.checked = true;
+                }
+            });
+        }
+        lastChecked = this;
+    }
+</script>
+</body>
+</html>

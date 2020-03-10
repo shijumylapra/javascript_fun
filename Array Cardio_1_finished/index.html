@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <style>
+
+    </style>
+    <script>
+        const j_inventors = [
+            {first:'Jeffry',last:'Solomon',year:'1895',passed:'1995'},
+            {first:'Suraj',last:'Kodithottam',year:'1975',passed:'2005'},
+            {first:'Mini',last:'John',year:'1895',passed:'1785'}
+        ];
+        const j_people = ['Shiju,Abraham','Joby,Philip','Anil,Janoor','Sussan,David','Meera,Nair'];
+
+        const numb = j_inventors.filter(inventor => inventor.year >= '1800' && inventor.year <= '1980');
+        console.table(numb);
+
+//Giv us an arry first and last name
+        const fullname = j_inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+        console.log(fullname);
+
+//sort by birthday ,oldest to youngest
+        const orderedlist = j_inventors.sort(function(a,b)
+        {
+            if(a.year > b.year)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        })
+        console.table(orderedlist);
+
+        const orderlis = j_inventors.sort((c,d) => c.year > d.year ? 1 : -1);//ternary operator
+        console.table(orderlis);
+        //how many inventors all live
+        const totalYear = j_inventors.reduce((total,invent) => 
+        {
+            return total+(invent.passed-invent.year)
+        },0);
+        console.log(totalYear);
+        //sort invent by year
+        const sortOldest = j_inventors.sort(function(a,b)
+        {
+            lastPerson = a.passed - a.year;
+            firstPerson = b.passed - b.year;
+            
+            return lastPerson > firstPerson ? 1 : -1 ; 
+        }  ) ;
+
+console.table(sortOldest);
+
+//sort  name alphabetically;
+const alphList = j_people.sort(function(lastOne,nextOne)
+{
+    const [aLastName,aFirst] = lastOne.split(' ,') ;
+    const [bLastName,bFirst] = nextOne.split(' ,');
+    return aLastName > bLastName ? 1 : -1;
+});
+console.log(alphList);
+
+//sum up the instance
+
+const data = ['car','truck','bike','walk','car','car','truck','bike','walk','car','car','truck','bike','walk','car',
+'car','truck','bike','walk','car','car','truck','bike','walk','car','car','truck','bike','walk','car'];
+    
+    const trans = data.reduce(function(obj,item)
+    {
+        if(!obj[item])
+        {
+            obj[item] = 0;
+        }
+         
+            obj[item]++;
+            return obj;
+        
+        
+    },{});
+    console.log(trans);
+    </script>
+</head>
+<body>
+
+<h1> Array Project </h1>
+ 
+</html>

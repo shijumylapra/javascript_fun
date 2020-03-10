@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anonymous (http://jsbin.com/vitiseyitu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Playing with CSS Variable and JS</title>
+</head>
+<body>
+ 
+    <h2> Update Css Varibales with <spam class = "h1"> Java Script</spam> </h2>
+
+  <div class= "cnt">
+  
+      <label for="spacing"> Spacing: </label>
+    <input type = "range" name="spacing" min="10" max="200" value= "10" data-sizing="px">
+    
+      <label for="blur"> Blur: </label>
+    <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    <br>
+      <label for="base"> Base Color: </label>
+    
+       <input type="color" name="base" value="#ffc600"> 
+    <br><br>
+     </div>
+  
+    <script>
+  const inputs = document.querySelectorAll('.cnt input');
+    
+    function handleUpdate()
+    {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`,this.value+suffix);
+    }
+      
+    inputs.forEach(input => input.addEventListener('change',handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove',handleUpdate));
+   
+  
+ 
+  </script>
+  
+  <style>
+    :root
+    {
+      --base:white;
+      --h1color:#fff700;
+      --spacing:10px;
+      --blur:10px;
+    }
+    body
+    {
+      text-align:center;
+      background:#193546;
+      color:yellow;
+    }
+    .controls
+    {
+      margin-bottom:50px;
+    }
+    img
+    {
+      padding:var(--spacing);
+      background:var(--base);
+      filter:blur(var(--blur));
+    }
+    
+    .h1
+    {
+      color:var(--h1color);
+    }
+    
+  </style>
+    <img src="https://www.finalsitesupport.com/hc/article_attachments/360000652831/500x375.png">
+</body>
+</html>
+
+

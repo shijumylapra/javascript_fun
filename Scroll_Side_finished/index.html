@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<body>
+
+</body>
+<body>
+    <div class="frame"> 
+        <h1> Page Scroll </h1>
+        <p>Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS coronavirus 2, or SARS-CoV-2),[9] a virus closely related to the SARS virus.[10][11][12] The disease was discovered and named during the 2019–20 coronavirus outbreak.[13][14] Those affected may develop a fever, dry cough, fatigue, and shortness of breath.[7][15][16] A sore throat, runny nose or sneezing is less common.[17] While the majority of cases result in mild symptoms,[18] some can progress to pneumonia and multi-organ failure.[13][14]</p>
+        <img src="https://img.medscape.com/thumbnail_library/dt_200121_coronavirus_800x450.jpg" width="300" height="300" class="align-left img-in">
+        <p>The infection is spread from one person to others via respiratory droplets produced from the airways, often during coughing or sneezing.[19][20] Time from exposure to onset of symptoms is generally between 2 and 14 days, with an average of 5 days.[21][22][23] The standard method of diagnosis is by reverse transcription polymerase chain reaction (rRT-PCR) from a nasopharyngeal swab or sputum sample, with results within a few hours to 2 days. Antibody assays can also be used, using a blood serum sample, with results within a few days.[24] The infection can also be diagnosed from a combination of symptoms, risk factors and a chest CT scan showing features of pneumonia.[25][26]</p>
+        <img src="https://i.insider.com/5e26d9cbb6d52d299e6de335?width=1100&format=jpeg&auto=webp"  width="300" height="300" class = "align-right img-in"><p>Correct handwashing technique, maintaining distance from people who are coughing and not touching one's face with unwashed hands are measures recommended to prevent the disease.[27] It is also recommended to cover one's nose and mouth with a tissue or a bent elbow when coughing.[27] Those who suspect they carry the virus are recommended to wear a surgical face mask and seek medical advice by calling a doctor rather than visiting a clinic in person. Masks are also recommended for those who are taking care of someone with a suspected infection but not for the general public.[28][29] There is no vaccine or specific antiviral treatment, with management involving treatment of symptoms, supportive care and experimental measures.[30] The case fatality rate is estimated at between 1% and 3%.[31][32]</p>
+        <p>The World Health Organization (WHO) has declared the 2019–20 coronavirus outbreak a Public Health Emergency of International Concern (PHEIC).[33][34] As of 7 March 2020, evidence of local transmission of the disease has been found in multiple countries across all six WHO regions.[35]</p>
+        <h4> Signs and symptoms</h4>
+        <p>Those infected may either be asymptomatic or develop symptoms including fever, cough, and shortness of breath.[7][15][16] Diarrhea or upper respiratory symptoms (e.g. sneezing, runny nose, sore throat) are less frequent.[17] Cases can progress to pneumonia, multi-organ failure, and death in the most vulnerable.[13][14]</p>
+        <img src="https://ca-times.brightspotcdn.com/dims4/default/dc2bdaf/2147483647/strip/true/crop/4809x3023+0+0/resize/840x528!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fe4%2Fde%2F30663f2a4a16b51034dee4728f9b%2Fhttps-delivery.gettyimages.com%2Fdownloads%2F1197353972.jpg"  width="300" height="300" class = "align-left img-in" > 
+        <p>The incubation period ranges from 1 to 14 days with an estimated median incubation period of 5 to 6 days according to the World Health Organization (WHO).[37][38]</p>
+        <img src="https://ichef.bbci.co.uk/news/1024/branded_news/012F/production/_111130300_corona_whatyouneedtodo.jpg"  width="300" height="300" class = "align-right img-in">
+        <p>Another study of 1,099 Chinese patients found that CT scans showed ground-glass opacities in 56% of patients, but 18% had no radiological findings. 5% of patients were admitted to intensive care units, 2.3% needed mechanical support of ventilation, and 1.4% died.[39] Bilateral and peripheral ground glass opacities are the most typical CT findings, according to researcher Bernheim et al. Consolidation, linear opacities, reverse halo sign are other radiological findings. Initially the lesions are located to one lung, but as the disease progress, indications manifest to both lungs in 88% of patients.[40] Children seem to handle the disease better than adults as the symptoms are usually milder, but sufficient evidence is still lacking.[41]</p>
+        <p>The disease is caused by the virus severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), previously referred to as the 2019 novel coronavirus (2019-nCoV).[11] It is primarily spread between people via respiratory droplets from coughs and sneezes.[20]</p>
+    </div>
+<script>
+  const slideImages =  document.querySelectorAll('.img-in');
+  function checkslide(e)
+  {
+    //console.log(window.scrollY);
+  slideImages.forEach(slideImages => 
+  {
+  
+  const sliderint = (window.scrollY + window.innerHeight)-slideImages.height / 2 ;
+  const imageBottom = slideImages.offsetTop + slideImages.height;
+  const isHalfShown = sliderint > slideImages.offsetTop;
+  const isnotScrollPast = window.scrollY < imageBottom;
+
+  if (isHalfShown && isnotScrollPast)
+  {
+    slideImages.classList.add('active');
+  }
+  else
+  {
+    slideImages.classList.remove('active');
+  }
+  //console.log(sliderint);
+  console.log(sliderint);
+  console.log(window.scrollY+window.innerHeight);
+  
+  });
+  }
+  window.addEventListener('scroll',checkslide);
+  
+</script>
+<style>
+  html {
+    box-sizing: border-box;
+    background: #ffc600;
+    font-family: 'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
+  .frame {
+    max-width: 700px;
+    margin: 100px auto;
+    background: white;
+    padding: 40px;
+    text-align: justify;
+  }
+
+  .align-left {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .align-right {
+    float: right;
+    margin-left: 20px;
+  }
+
+  .img-in {
+    opacity: 0;
+    transition: all .5s;
+  }
+
+  .align-left.img-in {
+    transform: translateX(-30%) scale(0.95);
+  }
+  
+  .align-right.img-in {
+    transform: translateX(30%) scale(0.95);
+  }
+
+  .img-in.active {
+    opacity: 1;
+    transform: translateX(0%) scale(1);
+  }
+
+</style>
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+
+</head>    
+<body>
+ 
+
+    <p onClick="colorChange()">Click Here</p>
+ 
+</body>
+<script>
+const Vechicle = [{name:'Ford',model:'Explorer'},{name:'Honda',model:'Civic'},{name:'Pontiac',model:'montana'}];
+
+ 
+
+function colorChange() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+
+      console.log("hello");
+    console.warn("Warning");
+    console.error("System Error");
+    console.info("Information");    
+    console.assert(p.classList.contains('ouch'),'Wrong');
+
+ console.clear();
+ //view DOM Element
+
+ console.log(p);
+ console.dir(p);
+ //grouping together
+ Vechicle.forEach(a=>{
+ console.log(`This is ${a.name}`);
+ console.log(`${a.name} is ${a.model} cars `);
+ console.group(`${a.name}`);
+
+
+
+ });
+    }
+
+    console.count('Number');
+ console.count('Number');
+ console.count('Hello');
+
+ console.count('Small');
+ console.count('Number');
+ console.count('Number');
+ console.count('Hello');
+ console.count('Hello');
+ console.count('Small');
+ console.count('Hello');
+ console.count('Hello');
+ console.count('Hello');
+ console.count('Small');
+ console.count('Hello');
+ console.count('Hello');
+console.count('Small');
+
+console.count('Hello');
+
+ console.count('Small');
+
+ console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    console.table(Vechicle);
+
+</script>
+<style>
+
+</style>
+</html>
