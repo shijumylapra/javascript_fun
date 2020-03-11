@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio 2</title>
+</head>
+<body>
+    <p> Have a look at the JavaScript Console </p>
+    <script>
+        const persons=[{name:'Asha',year:'1985'},
+        {name:'John',year:'1945'},
+        {name:'Sumith',year:'1991'},
+        {name:'Aneeta',year:'2010'},
+        {name:'Lovsy',year:'1960'}];
+
+        const comments = [{text:'Thank you',id:2363},
+        {text:'Wonderful',id:3365},
+        {text:'This is awesome',id:2552},
+        {text:'Super good',id:1125},
+        {text:'Nice very nice',id:5569}];
+
+
+        const currentYear = (new Date()).getFullYear();
+        const Adult1 = persons.some(person => (new Date().getFullYear - currentYear >=19)); 
+        console.log({Adult1});
+
+        const Adult2 = persons.some(x =>
+        {
+            const currentDate = (new Date().getFullYear);
+            return (currentYear - x.year >= 19);
+        })
+        console.log({Adult2});
+
+
+        const aComments = comments.find(function(comment)
+        {
+            if(comment.id === 1125)
+            {
+                return true;
+            }
+        });
+        console.log(aComments);
+      
+       
+        const aComments1 = comments.find(commit => (commit.id===2552 ? true : false));
+        const aComments2 = comments.find(commit => commit.id===2552);
+        const index = comments.findIndex(commit => commit.id === 5569);
+        //console.log(index);
+       
+        
+
+        console.clear();
+        //delete from an array by index
+      
+        comments.splice(index,1)
+        console.table(comments);
+
+        const newComments = [
+            comments.splice(0,index),
+            comments.splice(index+1)
+        ];
+       // const aComments2 = comments.find(comment => comments.id ===)
+     //   console.log(aComments2);
+
+    </script>
+</body>
