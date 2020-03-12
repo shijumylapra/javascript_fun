@@ -15,8 +15,23 @@
             </ul>
         </body>
     <script>
-        const NodeTimes = document.querySelectorAll('[data-time]');
-        const seconds = NodeTimes.map()
+        const NodeTimes = Array.from(document.querySelectorAll('[data-time]'));
+        const seconds = timeNodes
+        .map(node => node.dataset.time)
+        .map(timeCode => {
+            const [mins,secs] = timeCode.split(':').map((str){
+
+            })
+            return (mins * 60) + secs;
+            console.log(min,secs);
+        
+
+        })
+
+
+
+    
+
 
     </script>
     <style>
