@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Link Highlighter </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+        
+body {
+  min-height: 100vh;
+  margin: 0; /* Important! */
+  font-family: sans-serif;
+  background:
+    linear-gradient(45deg, rgb(154, 66, 226) 0%, hsla(24, 88%, 53%, 0) 70%),
+    linear-gradient(135deg, rgb(177, 50, 216) 10%, hsla(225, 95%, 50%, 0) 80%),
+    linear-gradient(225deg, rgb(238, 106, 54) 10%, hsla(249, 84%, 58%, 0) 80%),
+    linear-gradient(315deg, rgb(209, 241, 67) 100%, hsla(350, 93%, 52%, 0) 70%),
+    linear-gradient(315deg, rgb(24, 1, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: 20px;
+  line-height: 2;
+  position: relative;
+}
+
+a {
+  text-decoration:solid;
+  color: black;
+  background: rgba(0,0,0,0.05);
+  border-radius: 2px;
+}
+
+.highlight {
+  transition: all 0.5s;
+  border-bottom: 2px solid rgb(196, 154, 230);
+  position: absolute;
+  top: 0;
+  background: rgb(241, 108, 235);
+  left: 0;
+  z-index: -1;
+  border-radius: 2px;
+  display: block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+a
+{
+    color: rgb(145, 7, 7);
+}
+.menu_items {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin:100px 0;
+}
+
+.menu_items a {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 20px;
+  color: black;
+}
+
+    </style>
+
+<nav>
+
+    <ul class="menu_items">
+      <li><a href="">Home</a></li>
+      <li><a href="">Register <br> With us</a></li>
+      <li><a href="">Products</a></li>
+      <li><a href="">About Us</a></li>
+      <li><a href="">Contact Us</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <p> <a href="https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic" target="_blank"> Coronaviruses (CoV19) </a> are a large family of viruses that cause illness ranging from the common cold to more severe diseases such as Middle East Respiratory Syndrome (MERS-CoV) and Severe Acute Respiratory Syndrome (SARS-CoV). A novel coronavirus (nCoV) is a new strain that has not been previously identified in humans.  </p>
+    <p> Coronaviruses are zoonotic, meaning they are transmitted between animals and people.  Detailed investigations found that SARS-CoV was transmitted from civet cats to humans and <a href="https://www.cdc.gov/coronavirus/mers/index.html" target="_blank">MERS-CoV</a>from dromedary camels to humans. Several known coronaviruses are circulating in animals that have not yet infected humans.  </p>
+    <p> Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death.  </p>
+    <p> Standard recommendations to prevent infection spread include regular hand washing, covering mouth and nose when coughing and sneezing, thoroughly cooking meat and eggs. Avoid close contact with anyone showing symptoms of respiratory illness such as coughing and sneezing.</p>
+    <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+    <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+    <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
+    <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
+    <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+  </div>
+
+
+    <script>
+     
+        const trg = document.querySelectorAll('a');
+        const highlights = document.createElement('span');
+        highlights.classList.add('highlight');
+        document.body.append(highlights);
+
+        // function linkhighlighted()
+        // {
+        //     const linkPosition = this.getBoundingClientRect();
+        //     console.log(linkPosition);
+
+        //     highlights.style.width = `${linkPosition.width}px`;
+        //     highlights.style.height = `${linkPosition.height}px`; 
+
+        //     highlights.style.transform = `translate(${linkPosition.left}px,${linkPosition.top}px)`;
+        // }
+        // trg.forEach(a => a.addEventListener ('mouseenter',linkhighlighted));
+         
+        function linkhighlighted()
+        {
+            const linkPosition = this.getBoundingClientRect();
+            console.log(linkPosition);
+            const position = 
+            {
+                width:linkPosition.width,height:linkPosition.height,top:linkPosition.top + window.scrollY,
+                left:linkPosition.left + window.scrollX
+            }
+
+            highlights.style.width = `${position.width}px`;
+            highlights.style.height = `${position.height}px`; 
+            highlights.style.transform = `translate(${position.left}px,${position.top}px)`;
+        }
+        trg.forEach(a => a.addEventListener ('mouseenter',linkhighlighted));
+         
+
+        
+        
+    </script>
+</body>
+</html>

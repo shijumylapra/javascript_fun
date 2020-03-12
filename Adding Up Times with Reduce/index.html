@@ -2,36 +2,40 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Videos</title>
-    </head>
+        <title> Time Adding HR + MIN + SEC </title>
+       </head>
         <body>
             <ul class = "Videos"> 
-                <li data-time = "5:43"> 
-
+                <li data-time = "59:01"> 
                 </li>
-                <li data-time = "2:33">
-
+                <li data-time = "29:09">
                 </li>
             </ul>
         </body>
     <script>
-        const NodeTimes = Array.from(document.querySelectorAll('[data-time]'));
-        const seconds = timeNodes
-        .map(node => node.dataset.time)
-        .map(timeCode => {
-            const [mins,secs] = timeCode.split(':').map((str){
-
+     
+     
+            const nodeTimes = Array.from(document.querySelectorAll('[data-time]'));
+            const seconds = nodeTimes
+            .map(node => node.dataset.time)
+            .map(timeCode => {
+                const [mins, secs] = timeCode.split(':').map(parseFloat);
+                return (mins * 60) + secs;
             })
-            return (mins * 60) + secs;
-            console.log(min,secs);
-        
+            .reduce((total, vidSeconds) => total + vidSeconds);
 
-        })
+            let secondsLeft = seconds;
+            const hours = Math.floor(secondsLeft / 3600);
+            secondsLeft = secondsLeft % 3600;
+
+            const mins = Math.floor(secondsLeft / 60);
+            secondsLeft = secondsLeft % 60;
+
+            console.log(hours, mins, secondsLeft);
 
 
 
-    
-
+             
 
     </script>
     <style>
