@@ -156,18 +156,7 @@ body {
         //const ampm = hr > 12 ? ampm ='pm' : ampm = 'am';
         const min = timeend.getMinutes();
         endTime.textContent = `Back at ${regHrs} : ${min < 10 ?  '0' : ''}${min}`;
-
-
-        //Date.now()
-        //1584124189860
-        //new Date(1584124189860)
-        //Fri Mar 13 2020 11:29:49 GMT-0700 (Pacific Daylight Time)
-         
-
-        // var y = new Date();
-        // Fri Mar 13 2020 11:31:44 GMT-0700 (Pacific Daylight Time)
-        // y.getDate()
-        // 13
+ 
         
       }
       btn.forEach(button => button.addEventListener('click',startTimer));
