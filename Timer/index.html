@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Timer</title>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <style>
+      html 
+  {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #8E24AA;
+  background: linear-gradient(45deg,  #f5424b 0%,#4d0111 50%,#a10d57 100%);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+
+.time-left {
+  font-weight: 100;
+  font-size: 20rem;
+  margin: 0;
+  color: white;
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.05);
+}
+
+.timer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.timer__controls {
+  display: flex;
+}
+
+.timer__controls > * {
+  flex: 1;
+}
+
+.timer__controls form {
+  flex: 1;
+  display: flex;
+}
+
+.timer__controls input {
+  flex: 1;
+  border: 0;
+  padding: 2rem;
+}
+
+.timer__button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.1);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  padding: 1rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+.timer__button:hover,
+.timer__button:focus {
+  background: rgba(0,0,0,0.2);
+  outline: 0;
+}
+
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-end {
+  font-size: 4rem;
+  color: white;
+}
+
+  </style>
+</head>
+<body>
+  <div class="timer">
+    <div class="timer__controls">
+      <button data-time="20" class="timer__button">10 Secs</button>
+      <button data-time="300" class="timer__button">5 Minutes</button>
+      <button data-time="900" class="timer__button">15 Minutes</button>
+      <button data-time="1200" class="timer__button">20 Minutes</button>
+      <button data-time="3600" class="timer__button">1 Hour</button>
+      <form name="customForm" id="custom">
+        <input type="text" name="minutes" placeholder="Enter Minutes">
+      </form>
+    </div>
+    <div class="display">
+      <h1 class="time-left"></h1>
+      <p class="time-end"></p>
+    </div>
+  </div>
+
+  <script>
+
+      let countDown;
+      const btn = document.querySelectorAll('[data-time]');
+
+      
+      function Timer(seconds)
+      {
+        
+        const now = Date.now();
+        clearInterval(countDown);
+        const timeThen = now + seconds * 1000;
+        EndTime(timeThen);
+        //console.log(now,then);
+         countDown = setInterval(() => {
+            const secondsLeft =Math.round((timeThen - Date.now())/1000);
+            //Stop the timer
+            if(secondsLeft < 0 )
+            {
+                clearInterval(countDown);
+                return;
+            }
+            
+           // console.log(secondsLeft);
+            timeLeft(secondsLeft);
+        },1000)
+       
+      }
+      const displaytimer = document.querySelector('.time-left');
+      
+      function timeLeft (seconds)
+      {
+          const minutes = Math.floor(seconds/60);
+          const remainderSeconds = seconds % 60;
+          const display =  displaytimer.textContent = `${minutes} : ${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+      }
+
+      const endTime = document.querySelector('.time-end');
+
+      function EndTime(timeStamp)
+      {
+        const timeend = new Date(timeStamp);
+        const hr = timeend.getHours();
+        const regHrs = hr > 12 ? hr-12 : hr;
+        //const ampm = hr > 12 ? ampm ='pm' : ampm = 'am';
+        const min = timeend.getMinutes();
+        endTime.textContent = `Back at ${regHrs} : ${min < 10 ?  '0' : ''}${min}`;
+
+
+        //Date.now()
+        //1584124189860
+        //new Date(1584124189860)
+        //Fri Mar 13 2020 11:29:49 GMT-0700 (Pacific Daylight Time)
+         
+
+        // var y = new Date();
+        // Fri Mar 13 2020 11:31:44 GMT-0700 (Pacific Daylight Time)
+        // y.getDate()
+        // 13
+        
+      }
+      btn.forEach(button => button.addEventListener('click',startTimer));
+      
+      function startTimer()
+      {
+            // console.log(this.dataset);
+          const inttime = parseInt(this.dataset.time);
+           //console.log(inttime);
+          Timer(inttime);
+
+          //this.dataset ==== <button> data-time="20" class=""> </button>
+          //this.dataset is ghet the string of the  of the data-time text
+      }
+
+document.customForm.addEventListener('submit', function(e)
+ {
+  e.preventDefault();
+  const mins = this.minutes.value;
+  console.log(mins);
+  Timer(mins * 60);
+  this.reset();
+});
+  </script>
+</body>
+</html>

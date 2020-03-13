@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="body">
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+<button></button>
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after { 
+    box-sizing: inherit; 
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+  .one {
+    background: rgb(13, 0, 68);
+  }
+  .two {
+    background: rgb(38, 0, 128);
+  }
+
+  .three {
+    background: rgb(79, 4, 219);
+  }
+</style>
+
+<script>
+
+const alldiv = document.querySelectorAll('div');
+
+    function divClick(e)
+    {
+        console.log(this.classList.value);
+       // e.stopPropagation();
+        //stop bubbling this event up
+    }
+
+ alldiv.forEach(div => div.addEventListener('click',divClick,
+ {
+     capture:true,
+     once:true
+     //event trriger once
+     //capture not going to run bubble up its runs only capture down
+ }));
+
+ const createButton = document.createElement('button');
+ createButton.classList.add('clsbtn');
+ createButton.innerHTML = "Phone Number #";
+ document.body.append(createButton);
+
+ createButton.addEventListener('click',() => 
+ {
+     console.log('Clicked');
+ })
+
+ document.body.addEventListener('click',divClick);
+    
+</script>
+</body>
+</html>
