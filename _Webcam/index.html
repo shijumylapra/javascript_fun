@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Web Cam/title>
- <style>
-     html {
+  <title>Get User Media Code Along!</title>
+   
+</head>
+<body>
+
+  <div class="photobooth">
+    <div class="controls">
+      <button onClick="takePhoto()">Take Photo</button>
+ 
+    </div>
+    <canvas class="photo"></canvas>
+    <video class="player"></video>
+    <div class="strip"></div>
+    
+  </div>
+
+  <audio class="snap" src="camera-shutter-click-03.mp3" hidden></audio>
+
+  <script src="script.js"></script>
+
+  <style>
+    html 
+    {
   box-sizing: border-box;
 }
 
@@ -14,11 +34,11 @@
 
 html {
   font-size: 10px;
-  background: #ffc600;
+  background: #35010c;
 }
 
 .photobooth {
-  background: white;
+  background:floralwhite;
   max-width: 150rem;
   margin: 2rem auto;
   border-radius: 2px;
@@ -65,20 +85,6 @@ html {
 .strip a:nth-child(5n+4) img { transform: rotate(-11deg); }
 .strip a:nth-child(5n+5) img { transform: rotate(12deg); }
 
- </style>
-</head>
-<body>
-    <div class="photobooth">
-        <div class="controls">
-          <button onClick="takePhoto()">Take Photo</button>
-        </div>
-    </div>
-    <canvas class="photo"></canvas>
-    <video class="player"></video>
-    <div class="strip"></div>
-
-    <script>
-        
-    </script>
+  </style>
 </body>
 </html>
